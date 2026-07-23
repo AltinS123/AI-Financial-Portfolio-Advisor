@@ -1,0 +1,33 @@
+// ========================================
+// PORTFOLIO SUMMARY
+// ========================================
+
+Selected Shares =
+SELECTEDVALUE(
+    portfolio_assistant_signals[Current_Shares]
+)
+
+Selected Average Cost =
+SELECTEDVALUE(
+    portfolio_assistant_signals[Average_Cost]
+)
+
+Selected Current Price =
+SELECTEDVALUE(
+    portfolio_assistant_signals[Current_Price]
+)
+
+Selected Market Value =
+SELECTEDVALUE(
+    portfolio_assistant_signals[Market_Value]
+)
+
+Selected Unrealized Profit =
+SELECTEDVALUE(
+    portfolio_assistant_signals[Unrealized_Profit]
+)
+
+Selected Unrealized Return =
+SELECTEDVALUE(
+    portfolio_assistant_signals[Unrealized_Return_Pct]
+)

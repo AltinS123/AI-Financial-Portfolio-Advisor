@@ -1,14 +1,28 @@
-# 🤖 AI Portfolio Advisor using Microsoft Fabric
+# 🤖 AI Financial Portfolio Advisor using Microsoft Fabric
 
-An end-to-end AI-powered investment decision support system built using **Microsoft Fabric**, **Python**, **Power BI**, and **Natural Language Processing (NLP)**.
+![Microsoft Fabric](https://img.shields.io/badge/Microsoft-Fabric-blue)
+![Power BI](https://img.shields.io/badge/PowerBI-yellow)
+![Python](https://img.shields.io/badge/Python-3.11-blue)
+![NLP](https://img.shields.io/badge/NLP-FinBERT-green)
+![Status](https://img.shields.io/badge/Status-Completed-success)
 
-The solution combines live financial news, AI sentiment analysis, market intelligence, and portfolio holdings to generate personalized investment insights and recommendations.
+An end-to-end **AI-powered investment decision support platform** built using **Microsoft Fabric**, **Python**, **Power BI**, and **Natural Language Processing (NLP)**.
+
+The solution combines:
+
+- 📈 Live market prices
+- 📰 Financial news
+- 🤖 AI sentiment analysis
+- 📊 Portfolio analytics
+- 💡 Personalized investment recommendations
+
+into a single Microsoft Fabric analytics platform.
 
 ---
 
-# Project Overview
+# 📖 Project Overview
 
-Traditional investment dashboards focus mainly on historical prices and portfolio performance.
+Traditional investment dashboards focus primarily on historical prices and portfolio performance.
 
 This project extends portfolio analytics by integrating Artificial Intelligence into the investment workflow.
 
@@ -25,12 +39,18 @@ The system automatically:
 
 ---
 
-# Technologies Used
+# 🏗️ Solution Architecture
+
+![Architecture](images/architecture.png)
+
+---
+
+# ⚙️ Technologies Used
 
 - Microsoft Fabric
 - Microsoft Fabric Lakehouse
-- OneLake
 - Microsoft Fabric Pipelines
+- OneLake
 - Delta Lake
 - Power BI
 - Python
@@ -39,59 +59,15 @@ The system automatically:
 - Hugging Face Transformers
 - FinBERT
 - Finnhub API
+- Yahoo Finance
 
 ---
 
-# Solution Architecture
+# ⚙️ Microsoft Fabric Pipeline
 
-```
-Financial News API
-        │
-        ▼
-Notebook 01
-News Ingestion
-        │
-        ▼
-Notebook 02
-News Cleaning
-        │
-        ▼
-Notebook 03
-Sentiment Analysis (FinBERT)
-        │
-        ▼
-Notebook 04
-Market Intelligence
-        │
-        ▼
-Notebook 05
-Portfolio Assistant
-        │
-        ▼
-Delta Tables
-        │
-        ▼
-Semantic Model
-        │
-        ▼
-Power BI Dashboard
-```
+The complete solution is orchestrated using Microsoft Fabric Pipelines.
 
----
-
-# Microsoft Fabric Components
-
-## Lakehouse
-
-AI_Financial_Lakehouse
-
----
-
-## Pipeline
-
-AI_Financial_Intelligence_Pipeline
-
-Pipeline stages:
+Pipeline activities include:
 
 - News Ingestion
 - News Cleaning
@@ -100,69 +76,86 @@ Pipeline stages:
 - Portfolio Assistant
 - Semantic Model Refresh
 
----
-
-## Semantic Model
-
-AI_Financial_Intelligence_Model
+![Pipeline](images/fabric_pipeline.png)
 
 ---
 
-# Data Pipeline
+# 🏠 Lakehouse
 
-The pipeline automatically performs:
+The AI Financial Lakehouse stores all processed Delta tables used by the solution.
 
-### Step 1
+Main tables:
 
-Download financial news from external APIs.
+- financial_news_raw
+- financial_news_clean
+- financial_news_sentiment
+- ticker_market_intelligence
+- portfolio_assistant_signals
 
-### Step 2
+Portfolio data is accessed using OneLake Shortcuts:
 
-Clean and normalize articles.
+- portfolio_positions
+- stock_prices
 
-### Step 3
-
-Run FinBERT sentiment analysis.
-
-Outputs:
-
-- Positive
-- Neutral
-- Negative
-
-### Step 4
-
-Extract dominant financial topics using NLP classification.
-
-Examples:
-
-- Artificial Intelligence
-- Earnings
-- Valuation
-- Market Conditions
-- Product Launches
-
-### Step 5
-
-Aggregate ticker-level intelligence.
-
-Calculate:
-
-- Positive %
-- Negative %
-- Confidence
-- Risk
-- Market Signal
-
-### Step 6
-
-Combine market intelligence with portfolio holdings.
-
-Generate personalized recommendations.
+![Lakehouse](images/lakehouse.png)
 
 ---
 
-# Dashboard Features
+# 🗄️ Semantic Model
+
+The Semantic Model connects all Lakehouse tables into a unified analytical model consumed by Power BI.
+
+![Semantic Model](images/semantic_model.png)
+
+---
+
+# 🤖 AI Workflow
+
+The complete workflow is:
+
+Trading212 Portfolio
+
+⬇
+
+Python ETL
+
+⬇
+
+Microsoft Fabric Lakehouse
+
+⬇
+
+Yahoo Finance
+
+⬇
+
+Finnhub News API
+
+⬇
+
+FinBERT Sentiment Analysis
+
+⬇
+
+Market Intelligence
+
+⬇
+
+AI Portfolio Assistant
+
+⬇
+
+Power BI Dashboard
+
+---
+
+# 📊 Dashboard Preview
+
+![Dashboard](images/dashboard.png)
+
+---
+
+# 💡 Dashboard Features
 
 ## Portfolio Summary
 
@@ -189,17 +182,13 @@ Displays:
 
 ## AI Portfolio Advisor
 
-Generates a personalized explanation for each investment.
+Generates personalized explanations using:
 
-Example:
-
-> You currently own IBM shares.
-
-> Recent financial news shows predominantly negative sentiment.
-
-> Your position is currently at an unrealized loss.
-
-> Current recommendation is to hold rather than average down while negative sentiment persists.
+- Portfolio positions
+- AI sentiment
+- Market intelligence
+- Confidence score
+- Risk assessment
 
 ---
 
@@ -213,25 +202,13 @@ Displays:
 
 ---
 
-# Data Model
+# 🧠 Artificial Intelligence
 
-Tables:
+## Sentiment Analysis
 
-- financial_news_raw
-- financial_news_clean
-- financial_news_sentiment
-- ticker_market_intelligence
-- portfolio_assistant_signals
-- portfolio_positions
-- stock_prices
+Model:
 
----
-
-# AI Models
-
-### Sentiment Analysis
-
-FinBERT
+- FinBERT
 
 Outputs:
 
@@ -241,103 +218,93 @@ Outputs:
 
 ---
 
-### Topic Classification
+## Topic Classification
 
-Zero-shot classification
+Zero-shot Classification
 
-Topics include:
+Examples:
 
-- Earnings
 - Artificial Intelligence
-- Regulation
+- Earnings
 - Valuation
 - Partnerships
+- Regulation
 - Market Conditions
 
 ---
 
-# Power BI Dashboard
+# 📁 Repository Structure
 
-The report provides:
+```text
+AI-Financial-Portfolio-Advisor/
 
-- Interactive ticker selection
-- AI-generated investment recommendations
-- Portfolio metrics
-- News insights
-- Risk analysis
-- Confidence scoring
-
----
-
-# Skills Demonstrated
-
-Microsoft Fabric
-
-Power BI
-
-Python
-
-PySpark
-
-Delta Lake
-
-OneLake
-
-Microsoft Fabric Pipelines
-
-Semantic Models
-
-Natural Language Processing
-
-Artificial Intelligence
-
-Financial Data Analytics
-
-ETL Development
-
-Data Engineering
-
-Dashboard Design
-
-Business Intelligence
-
----
-
-# Repository Structure
-
-```
-Images/
-Notebooks/
-Python/
-Power BI/
-Documentation/
-Sample Data/
+├── dax/
+├── docs/
+├── images/
+├── notebooks/
+├── powerbi/
+├── src/
+├── README.md
+├── requirements.txt
+├── LICENSE
+└── .gitignore
 ```
 
 ---
 
-# Future Improvements
+# 🚀 Skills Demonstrated
 
-- Integration with additional financial news providers
+- Microsoft Fabric
+- Power BI
+- Python
+- PySpark
+- Delta Lake
+- OneLake
+- Microsoft Fabric Pipelines
+- Semantic Models
+- Data Engineering
+- ETL Development
+- Natural Language Processing
+- Artificial Intelligence
+- Financial Analytics
+- Dashboard Design
+- Business Intelligence
+
+---
+
+# 🔮 Future Improvements
+
 - Real-time streaming using Eventstreams
 - Large Language Model (LLM) explanations
-- Price forecasting using Machine Learning
-- Email alerts for significant sentiment changes
-- Portfolio optimization suggestions
-- Mobile-friendly Power BI report
+- Machine Learning price forecasting
+- Portfolio optimization
+- Email alerts
+- Mobile-friendly Power BI dashboard
 
 ---
 
-# Dashboard Preview
+# 🔒 Disclaimer
 
-![AI Portfolio Dashboard](images/dashboard.png)
+This repository has been prepared for demonstration purposes.
+
+- Portfolio values have been anonymized.
+- API credentials have been removed.
+- Personal investment information is not included.
+
+The AI-generated recommendations are intended solely for educational purposes and should not be interpreted as financial advice.
 
 ---
 
-# Author
+# 👨‍💻 Author
 
 **Altin Salihi**
 
-Data Analyst | Business Intelligence Analyst
+**Data Analyst | Business Intelligence Analyst**
 
-Microsoft Fabric | Power BI | Python | SQL
+### Technologies
+
+Microsoft Fabric • Power BI • Python • SQL • Data Engineering • AI
+
+---
+
+⭐ If you found this project interesting, consider giving it a star.

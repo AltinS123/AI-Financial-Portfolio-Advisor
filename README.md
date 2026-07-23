@@ -330,7 +330,7 @@ Sample Data/
 
 # Dashboard Preview
 
-*(Insert screenshots here)*
+images/dashboard.png
 
 ---
 

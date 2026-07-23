@@ -1,0 +1,117 @@
+# Data Model
+
+## Overview
+
+The solution uses a star-style analytical model built on Microsoft Fabric Lakehouse tables.
+
+---
+
+## Tables
+
+### financial_news_raw
+
+Stores the original news articles collected from the Finnhub API.
+
+Primary Key:
+Article_ID
+
+---
+
+### financial_news_clean
+
+Cleaned version of the raw news data.
+
+Primary Key:
+Article_ID
+
+---
+
+### financial_news_sentiment
+
+Stores AI-generated sentiment predictions.
+
+Primary Key:
+Article_ID
+
+Important fields:
+
+- Sentiment
+- Confidence
+- Sentiment Score
+
+---
+
+### ticker_market_intelligence
+
+Aggregated sentiment metrics at ticker level.
+
+Primary Key:
+Ticker
+
+Includes:
+
+- Positive %
+- Negative %
+- Main Topic
+- Recommendation
+- Risk
+
+---
+
+### portfolio_positions
+
+Current investment holdings imported from the Investment Lakehouse.
+
+Primary Key:
+Ticker
+
+Includes:
+
+- Current Shares
+- Average Cost
+- Market Value
+- Unrealized Profit
+
+---
+
+### stock_prices
+
+Current market prices retrieved from Yahoo Finance.
+
+Primary Key:
+Ticker
+
+---
+
+### portfolio_assistant_signals
+
+Final AI-generated recommendations combining portfolio positions and market intelligence.
+
+Primary Key:
+Ticker
+
+Includes:
+
+- Recommendation
+- Confidence
+- Risk
+- Assistant Response
+
+---
+
+## Relationships
+
+financial_news_clean
+→ financial_news_sentiment
+
+financial_news_sentiment
+→ ticker_market_intelligence
+
+portfolio_positions
+→ stock_prices
+
+portfolio_positions
+→ portfolio_assistant_signals
+
+ticker_market_intelligence
+→ portfolio_assistant_signals

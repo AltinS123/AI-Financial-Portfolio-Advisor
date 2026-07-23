@@ -330,7 +330,7 @@ Sample Data/
 
 # Dashboard Preview
 
-https://github.com/AltinS123/AI-Financial-Portfolio-Advisor/blob/73307a9c0c1b26c4820751c27d0e652e45bfc8f3/images/dashboard.png
+![AI Portfolio Dashboard](images/dashboard.png)
 
 ---
 
